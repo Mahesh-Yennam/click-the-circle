@@ -191,3 +191,35 @@ button:active {
     min-height: 30px;
   }
 }
+
+.intro {
+  max-width: 550px;
+  margin: 0 auto 20px;
+  line-height: 1.5;
+}
+
+.instructions {
+  max-width: 550px;
+  margin: 30px auto 0;
+  padding: 20px;
+  text-align: left;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.instructions h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.instructions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
