@@ -223,3 +223,28 @@ footer {
   padding: 20px;
   font-size: 14px;
 }
+
+.faq {
+    max-width: 550px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: left;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.faq h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.faq h3 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.faq p {
+    margin-top: 5px;
+    line-height: 1.5;
+}
