@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mahesh-yennam.github.io/click-the-circle/sitemap.xml
