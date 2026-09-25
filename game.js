@@ -71,6 +71,9 @@ circle.addEventListener("click", function () {
 
 function startGame() {
   score = 0;
+
+  gtag("event", "game_start");
+
   time = 30;
 
   circleSize = 50;
@@ -123,6 +126,10 @@ function startGame() {
 function endGame() {
   gameRunning = false;
 
+  gtag("event", "game_over", {
+    score: score,
+  });
+
   // Stop timer
 
   clearInterval(timer);
@@ -149,6 +156,10 @@ function endGame() {
     // Save high score
 
     localStorage.setItem("highScore", highScore);
+
+    gtag("event", "new_high_score", {
+      score: score,
+    });
   }
 
   // Show game-over screen
