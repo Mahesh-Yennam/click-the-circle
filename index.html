@@ -6,8 +6,8 @@
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Click the Circle - Free Reaction Game">
-  <meta property="og:description" content="Test your reaction speed. Click the red circle as quickly as possible and try to get the highest score in 30 seconds.">
+  <meta property="og:title" content="Click the Circle - Modern Reaction Speed Game">
+  <meta property="og:description" content="Test your reaction speed! Click the target circle as quickly as possible and get the highest score in 30 seconds.">
   <meta property="og:url" content="https://mahesh-yennam.github.io/click-the-circle/">
   <meta property="og:image" content="https://mahesh-yennam.github.io/click-the-circle/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -16,8 +16,8 @@
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Click the Circle - Free Reaction Game">
-  <meta name="twitter:description" content="Test your reaction speed with a free 30-second browser game.">
+  <meta name="twitter:title" content="Click the Circle - Modern Reaction Speed Game">
+  <meta name="twitter:description" content="Test your reaction speed with this fast-paced 30-second browser reflex challenge.">
   <meta name="twitter:image" content="https://mahesh-yennam.github.io/click-the-circle/og-image.png">
   
   <!-- Google tag (gtag.js) -->
@@ -26,25 +26,24 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-QV1JP45346');
   </script>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description"
-    content="Click the Circle is a free browser reaction game. Click the circle as fast as possible and try to beat your high score in 30 seconds.">
+    content="Click the Circle is a free modern browser reaction game. Click the glowing circle as fast as possible to beat your high score in 30 seconds.">
+  <link rel="canonical" href="https://mahesh-yennam.github.io/click-the-circle/">
+  <meta name="theme-color" content="#090d16">
 
-  <meta name="theme-color" content="#f5f5f5">
-
-  <meta property="og:title" content="Click the Circle - Free Reaction Game">
-  <meta property="og:description"
-    content="How many times can you click the circle in 30 seconds? Play for free and beat your high score.">
-  <meta property="og:type" content="website">
-
-  <title>Click the Circle - Free Reaction Game</title>
+  <title>Click the Circle - Fast-Paced Reaction Game</title>
   
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -53,131 +52,271 @@
       "@type": "WebApplication",
       "name": "Click the Circle",
       "url": "https://mahesh-yennam.github.io/click-the-circle/",
-      "description": "A free browser reaction game where players click a moving circle as quickly as possible and try to get the highest score in 30 seconds.",
+      "description": "A modern browser reaction game where players click a moving circle as quickly as possible and try to get the highest score in 30 seconds.",
       "applicationCategory": "Game",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript",
       "isAccessibleForFree": true
   }
   </script>
-  
 </head>
 
 <body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <main class="container">
-
-    <h1>Click the Circle</h1>
+    <!-- Header / Navbar -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-badge">⚡ REFLEX ARCADE</span>
+        <h1>Click The Circle</h1>
+      </div>
+      <div class="header-actions">
+        <button id="soundToggle" class="icon-btn" aria-label="Toggle Sound" title="Toggle Sound">
+          <svg id="soundIconOn" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg id="soundIconOff" class="icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
 
     <p class="intro">
-        Test your reaction speed with this free browser reaction game.
-        Click the red circle as quickly as you can and score as many points
-        as possible before the 30-second timer runs out.
+      Test your speed and reaction limits! Click the glowing target as quickly as you can before the <strong>30-second</strong> countdown hits zero.
     </p>
 
-    <div class="stats">
-
-      <div>
-        <span>Score</span>
-        <strong id="score">0</strong>
+    <!-- Stats Dashboard Grid -->
+    <section class="stats" aria-label="Game Statistics">
+      <div class="stat-card" id="cardScore">
+        <div class="stat-icon-wrap icon-score">
+          <span>🎯</span>
+        </div>
+        <div class="stat-meta">
+          <span class="stat-label">Score</span>
+          <strong id="score" class="stat-value">0</strong>
+        </div>
       </div>
 
-      <div>
-        <span>Time</span>
-        <strong id="time">30</strong>
+      <div class="stat-card" id="cardTime">
+        <div class="stat-icon-wrap icon-time">
+          <span>⏱️</span>
+        </div>
+        <div class="stat-meta">
+          <span class="stat-label">Time</span>
+          <strong id="time" class="stat-value">30</strong>
+        </div>
       </div>
 
-      <div>
-        <span>Best</span>
-        <strong id="highScore">0</strong>
+      <div class="stat-card" id="cardCombo">
+        <div class="stat-icon-wrap icon-combo">
+          <span>⚡</span>
+        </div>
+        <div class="stat-meta">
+          <span class="stat-label">Streak</span>
+          <strong id="streakVal" class="stat-value">0x</strong>
+        </div>
       </div>
 
+      <div class="stat-card" id="cardBest">
+        <div class="stat-icon-wrap icon-best">
+          <span>🏆</span>
+        </div>
+        <div class="stat-meta">
+          <span class="stat-label">Best</span>
+          <strong id="highScore" class="stat-value">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timer countdown progress bar -->
+    <div class="progress-container" aria-hidden="true">
+      <div id="timerBar" class="progress-bar"></div>
     </div>
 
-    <button id="startButton">
-      Start Game
-    </button>
-
-    <div id="game">
-
-      <div id="circle"></div>
-
-      <div id="gameOver" class="game-over">
-
-        <h2>Game Over!</h2>
-
-        <p>Your Score</p>
-
-        <strong id="finalScore">0</strong>
-
-        <button id="restartButton">
-          Play Again
-        </button>
-
-      </div>
-
+    <!-- Main action button -->
+    <div class="action-bar">
+      <button id="startButton" class="btn-primary">
+        <span class="btn-content">
+          <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span id="startBtnText">Start Game</span>
+        </span>
+        <span class="btn-glow"></span>
+      </button>
     </div>
 
-    <p id="message">
-      Press Start Game to begin!
+    <!-- Status message -->
+    <p id="message" class="message-banner" role="status">
+      Press <strong>Start Game</strong> to begin your speed trial!
     </p>
 
-    <section class="instructions">
+    <!-- Interactive Game Arena -->
+    <div id="game" class="game-arena" tabindex="0" role="region" aria-label="Game board">
+      <!-- Particle effects canvas -->
+      <canvas id="fxCanvas"></canvas>
 
-      <h2>How to Play Click the Circle</h2>
-  
-      <p>
-          Click the red circle as quickly as possible whenever it appears.
-          Each successful click increases your score, while the circle
-          becomes smaller and harder to hit.
-      </p>
-  
-      <ol>
-          <li>Press <strong>Start Game</strong> to begin.</li>
-          <li>Click or tap the red circle.</li>
-          <li>Keep clicking as quickly as you can.</li>
-          <li>The circle gets smaller as your score increases.</li>
-          <li>Try to get the highest score possible in 30 seconds.</li>
-      </ol>
+      <!-- Idle Start Prompt Overlay -->
+      <div id="startOverlay" class="idle-overlay">
+        <div class="idle-pulse-ring"></div>
+        <div class="idle-core">
+          <span>TAP TO PLAY</span>
+        </div>
+      </div>
 
-  </section>
+      <!-- Target Circle -->
+      <div id="circle" class="target-circle" role="button" aria-label="Target">
+        <div class="circle-inner"></div>
+        <div class="circle-ring"></div>
+      </div>
 
+      <!-- Floating scores container -->
+      <div id="floaters" class="floaters-layer" aria-hidden="true"></div>
+
+      <!-- Game Over Modal Overlay -->
+      <div id="gameOver" class="game-over-modal" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
+        <div class="modal-card">
+          <div class="modal-badge-icon" id="modalBadgeIcon">🏆</div>
+          <h2 id="gameOverTitle">Time's Up!</h2>
+          <div id="rankBadge" class="rank-badge">⚡ SHARPSHOOTER</div>
+
+          <div class="final-score-display">
+            <span class="final-score-label">Final Score</span>
+            <strong id="finalScore" class="final-score-val">0</strong>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-item">
+              <span class="result-title">Clicks/Sec (CPS)</span>
+              <strong id="cpsStat" class="result-val">0.0</strong>
+            </div>
+            <div class="result-item">
+              <span class="result-title">Max Streak</span>
+              <strong id="maxStreakStat" class="result-val">0</strong>
+            </div>
+            <div class="result-item">
+              <span class="result-title">All-Time Best</span>
+              <strong id="modalHighScore" class="result-val">0</strong>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button id="restartButton" class="btn-primary modal-btn">
+              <span>Play Again 🔁</span>
+            </button>
+            <button id="shareButton" class="btn-secondary modal-btn">
+              <span>Share Score 📋</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to Play Section -->
+    <section class="instructions-section">
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-pill">HOW TO PLAY</span>
+          <h2>Sharpen Your Reflexes</h2>
+        </div>
+        <p class="section-desc">
+          Click the glowing target circle as quickly as possible. The game gets progressively harder as your score climbs!
+        </p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>Hit Start</h3>
+            <p>Click "Start Game" or tap anywhere inside the arena to launch the 30-second clock.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3>Click The Target</h3>
+            <p>Click or tap the radiant circle immediately when it jumps to a new location.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>Build Streaks</h3>
+            <p>Hit targets rapidly without stalling to trigger multi-click combos and high CPS.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h3>Shrinking Circle</h3>
+            <p>As your score climbs higher, the circle shrinks down, challenging your precision.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-pill">FAQS</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>
+              <span>Is Click the Circle completely free?</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="faq-content">
+              <p>Yes! Click the Circle is 100% free with no downloads, sign-ups, or microtransactions required. Play directly in your browser on desktop, tablet, or mobile.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>How does the 30-second timer work?</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="faq-content">
+              <p>Once you hit Start, you have exactly 30 seconds to click as many circles as you can. When the timer hits zero, the game ends and your score is ranked.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Does the game save my High Score?</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="faq-content">
+              <p>Yes. Your all-time personal best is automatically saved in your browser's local storage so you can come back anytime and beat your record.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Can I play on smartphones or tablets?</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="faq-content">
+              <p>Absolutely. The game features zero-latency touch support tailored specifically for iOS and Android touchscreens without double-tap delay.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
-  
-  <section class="faq">
 
-    <h2>Frequently Asked Questions</h2>
-
-    <h3>Is Click the Circle free?</h3>
-    <p>
-        Yes. Click the Circle is a free browser game that you can play
-        without installing an app.
-    </p>
-
-    <h3>How long does a game last?</h3>
-    <p>
-        Each game lasts 30 seconds.
-    </p>
-
-    <h3>Does the game save my high score?</h3>
-    <p>
-        Yes. Your best score is saved in your browser so you can try
-        to beat it later.
-    </p>
-
-    <h3>Can I play on a phone?</h3>
-    <p>
-        Yes. The game supports both mouse clicks and touch input.
-    </p>
-
-  </section>
-
-  <footer>
-    <p>Click the Circle &copy; 2026</p>
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>Click the Circle &copy; 2026 &bull; Precision & Reaction Challenge</p>
   </footer>
 
   <script src="game.js"></script>
-
 </body>
 
 </html>
