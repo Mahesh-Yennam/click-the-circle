@@ -2,6 +2,15 @@
 
 A modern, fast-paced browser reaction game built with HTML5, CSS3, and Vanilla JavaScript. Test your reaction speed and precision against a 30-second countdown.
 
+---
+
+### 🎮 Play the Game Live!
+👉 **Click here to test your reflexes:** **[https://mahesh-yennam.github.io/click-the-circle/](https://mahesh-yennam.github.io/click-the-circle/)**
+
+*Free to play instantly in your browser on both desktop and mobile — no install needed!*
+
+---
+
 ## ✨ Features & Enhancements
 
 - **Modern Cyber-Arcade Aesthetic**: Deep dark theme with glassmorphism cards, ambient glowing mesh backgrounds, and sleek typography using Google Fonts (`Outfit` & `Plus Jakarta Sans`).
