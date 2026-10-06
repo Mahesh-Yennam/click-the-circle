@@ -5,7 +5,7 @@ A modern, fast-paced browser reaction game built with HTML5, CSS3, and Vanilla J
 ---
 
 ### 🎮 Play the Game Live!
-👉 **Click here to test your reflexes:** **[https://mahesh-yennam.github.io/click-the-circle/](https://mahesh-yennam.github.io/click-the-circle/)**
+👉 **Click here to test your reflexes:** <a href="https://mahesh-yennam.github.io/click-the-circle/" target="_blank" rel="noopener noreferrer"><strong>https://mahesh-yennam.github.io/click-the-circle/ ↗</strong></a>
 
 *Free to play instantly in your browser on both desktop and mobile — no install needed!*
 
